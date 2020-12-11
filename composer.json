@@ -14,5 +14,6 @@
             "vzhabonos\\vindecoder\\": "src/"
         }
     },
+    "minimum-stability": "dev",
     "require": {}
 }
