@@ -1,0 +1,17 @@
+{
+    "name": "viacheslav/vindecoder-api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Viacheslav Zhabonos",
+            "email": "vyacheslav0310@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "vzhabonos\\vindecoder\\": "src/"
+        }
+    },
+    "require": {}
+}
