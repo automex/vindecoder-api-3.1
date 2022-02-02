@@ -7,12 +7,10 @@ class ApiTest extends TestCase
 {
 	public function testShouldReturnErrorNotRegonizedOnDecodeInfo()
     {	
-		if ( !empty(getenv('VINCARIO_API_KEY')) ) {
-			
+		if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {		
 			$apiKey = getenv('VINCARIO_API_KEY');
 			$apiSecret = getenv('VINCARIO_API_SECRET');
-			$vinNumber = getenv('VINCARIO_VIN_NUMBER');
-			
+			$vinNumber = getenv('VINCARIO_VIN_NUMBER');	
 		} else {
 			$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 			$dotenv->load();
@@ -41,12 +39,10 @@ class ApiTest extends TestCase
 	
 	public function testShouldReturnErrorNotRegonizedOnDecode()
     {		
-		if ( !empty(getenv('VINCARIO_API_KEY')) ) {
-			
+		if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {		
 			$apiKey = getenv('VINCARIO_API_KEY');
 			$apiSecret = getenv('VINCARIO_API_SECRET');
-			$vinNumber = getenv('VINCARIO_VIN_NUMBER');
-			
+			$vinNumber = getenv('VINCARIO_VIN_NUMBER');	
 		} else {
 			$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 			$dotenv->load();
@@ -75,12 +71,10 @@ class ApiTest extends TestCase
 	
 	public function testShouldReturnInformationStolenCheck()
     {		
-		if ( !empty(getenv('VINCARIO_API_KEY')) ) {
-			
+		if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {
 			$apiKey = getenv('VINCARIO_API_KEY');
 			$apiSecret = getenv('VINCARIO_API_SECRET');
 			$vinNumber = getenv('VINCARIO_VIN_NUMBER');
-			
 		} else {
 			$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 			$dotenv->load();
@@ -109,11 +103,9 @@ class ApiTest extends TestCase
 	
 	public function testShouldReturnCurrentBelance()
     {		
-		if ( !empty(getenv('VINCARIO_API_KEY')) ) {
-			
+		if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {		
 			$apiKey = getenv('VINCARIO_API_KEY');
-			$apiSecret = getenv('VINCARIO_API_SECRET');
-			
+			$apiSecret = getenv('VINCARIO_API_SECRET');		
 		} else {
 			$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 			$dotenv->load();
