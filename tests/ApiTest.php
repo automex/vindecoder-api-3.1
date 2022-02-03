@@ -58,10 +58,11 @@ class ApiTest extends TestCase
         
         $data = $api->decodeInfo($vinNumber);
 
-		$this->assertEquals(
-            'Make',
-            $data['decode'][0]
-        );
+        $this->assertContains(
+			'Make', 
+			$data['decode'], 
+			"Array doesn't contains 'Make' as Value"
+		);
 
     }
     
