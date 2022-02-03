@@ -57,9 +57,7 @@ class ApiTest extends TestCase
         $api = new Api($apiKey, $apiSecret);
         
         $data = $api->decodeInfo($vinNumber);
-        
-        //print_r($data);
-		
+
 		$this->assertEquals(
             'Make',
             $data['decode'][0]
@@ -119,9 +117,7 @@ class ApiTest extends TestCase
         $api = new Api($apiKey, $apiSecret);
         
         $data = $api->decode($vinNumber);
-		
-		//print_r($data);
-		
+				
 		$this->assertEquals(
             'Seat',
             $data['decode'][1]['value']
