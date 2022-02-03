@@ -24,4 +24,5 @@ jobs:
           VINCARIO_API_SECRET: ${{secrets.VINCARIO_API_SECRET}}
           VINCARIO_VIN_NUMBER: ${{secrets.VINCARIO_VIN_NUMBER}}
           VINCARIO_VIN_NUMBER2: ${{secrets.VINCARIO_VIN_NUMBER2}}
+          VINCARIO_VIN_NUMBER3: ${{secrets.VINCARIO_VIN_NUMBER3}}
         run: composer run-script testdox

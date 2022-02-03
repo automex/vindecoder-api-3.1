@@ -15,12 +15,14 @@ class Api
     const ID_DECODE_INFO = 'info';
     const ID_DECODE = 'decode';
     const ID_STOLEN_CHECK = 'stolen-check';
+    const ID_VEHICLE_MARKET_VALUE = 'vehicle-market-value';
     const ID_BALANCE = 'balance';
 
     private static $endpoints = [
         self::ID_DECODE_INFO => 'decode/info',
         self::ID_DECODE => 'decode',
         self::ID_STOLEN_CHECK => 'stolen-check',
+        self::ID_VEHICLE_MARKET_VALUE => 'vehicle-market-value',
         self::ID_BALANCE => 'balance',
     ];
 
@@ -62,6 +64,15 @@ class Api
     public function stolenCheck(string $vin)
     {
         return $this->makeApiRequest(self::ID_STOLEN_CHECK, $vin);
+    }
+	
+	/**
+     * @param string $vin
+     * @return array|bool|null
+     */
+    public function vehicleMarketValue(string $vin)
+    {
+        return $this->makeApiRequest(self::ID_VEHICLE_MARKET_VALUE, $vin);
     }
 
     /**

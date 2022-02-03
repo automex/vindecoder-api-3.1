@@ -159,6 +159,34 @@ class ApiTest extends TestCase
             $data['stolen'][6]['code']
         );
     }
+	
+	public function testShouldReturnVehicleMarketValue()
+    {		
+        if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {
+            $apiKey = getenv('VINCARIO_API_KEY');
+            $apiSecret = getenv('VINCARIO_API_SECRET');
+            $vinNumber = getenv('VINCARIO_VIN_NUMBER3');
+        } else {
+            $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+            $dotenv->load();
+                
+            $dotenv->required('VINCARIO_API_KEY', 'VINCARIO_API_SECRET', 'VINCARIO_VIN_NUMBER3');
+            
+            $apiKey = $_ENV['VINCARIO_API_KEY'];
+            $apiSecret = $_ENV['VINCARIO_API_SECRET'];
+            $vinNumber = $_ENV['VINCARIO_VIN_NUMBER3'];
+        }
+        
+        $api = new Api($apiKey, $apiSecret);
+        
+        $data = $api->vehicleMarketValue($vinNumber);
+		
+        $this->assertEquals(
+            'Toyota',
+            $data['vehicle']['make'],
+			"Vehicle make is not 'Toyota'"
+        );
+    }
     
     public function testShouldReturnCurrentBelance()
     {		
