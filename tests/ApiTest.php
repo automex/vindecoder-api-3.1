@@ -1,4 +1,4 @@
-<?php 
+sk<?php 
 
 use PHPUnit\Framework\TestCase;
 use vzhabonos\vindecoder\Api;
@@ -36,6 +36,36 @@ class ApiTest extends TestCase
             $data['message']
         );
     }
+	
+	public function testShouldReturnVehicleMakeLabelOnDecodeInfo()
+    {	
+        if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {		
+            $apiKey = getenv('VINCARIO_API_KEY');
+            $apiSecret = getenv('VINCARIO_API_SECRET');
+            $vinNumber = getenv('VINCARIO_VIN_NUMBER2');	
+        } else {
+            $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+            $dotenv->load();
+                
+            $dotenv->required('VINCARIO_API_KEY', 'VINCARIO_API_SECRET', 'VINCARIO_VIN_NUMBER2');
+            
+            $apiKey = $_ENV['VINCARIO_API_KEY'];
+            $apiSecret = $_ENV['VINCARIO_API_SECRET'];
+            $vinNumber = $_ENV['VINCARIO_VIN_NUMBER2'];
+        }
+        
+        $api = new Api($apiKey, $apiSecret);
+        
+        $data = $api->decodeInfo($vinNumber);
+        
+        //print_r($data);
+		
+		$this->assertEquals(
+            'Make',
+            $data['decode'][0]
+        );
+
+    }
     
     public function testShouldReturnErrorNotRegonizedOnDecode()
     {		
@@ -67,6 +97,36 @@ class ApiTest extends TestCase
             'Not recognized',
             $data['message']
         );
+    }
+	
+	public function testShouldReturnVehicleMakeOnDecode()
+    {		
+        if ( !empty(getenv('VINCARIO_API_KEY')) && !empty(getenv('VINCARIO_API_SECRET')) ) {		
+            $apiKey = getenv('VINCARIO_API_KEY');
+            $apiSecret = getenv('VINCARIO_API_SECRET');
+            $vinNumber = getenv('VINCARIO_VIN_NUMBER2');	
+        } else {
+            $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+            $dotenv->load();
+                
+            $dotenv->required('VINCARIO_API_KEY', 'VINCARIO_API_SECRET', 'VINCARIO_VIN_NUMBER2');
+            
+            $apiKey = $_ENV['VINCARIO_API_KEY'];
+            $apiSecret = $_ENV['VINCARIO_API_SECRET'];
+            $vinNumber = $_ENV['VINCARIO_VIN_NUMBER2'];
+        }
+        
+        $api = new Api($apiKey, $apiSecret);
+        
+        $data = $api->decode($vinNumber);
+		
+		//print_r($data);
+		
+		$this->assertEquals(
+            'Seat',
+            $data['decode'][1]['value']
+        );
+
     }
     
     public function testShouldReturnInformationStolenCheck()
@@ -121,7 +181,7 @@ class ApiTest extends TestCase
         $data = $api->balance();
         
         $this->assertEquals(
-            '20',
+            '19',
             $data['API Decode']
         );
 
